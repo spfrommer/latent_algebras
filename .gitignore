@@ -1,0 +1,14 @@
+/out/
+/data/
+/data_bk/
+/data_raw/
+/data_bk2/
+/test_out/
+/remote/
+/test_out_bk/
+wandb/
+/.vscode/
+*.egg-info
+*.swp
+*.pyc
+*.gif

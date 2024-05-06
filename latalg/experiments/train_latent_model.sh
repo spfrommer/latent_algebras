@@ -1,0 +1,1 @@
+python data/train_latent_model.py --max_epochs=50 --group=train_latent --train_latent_model=True

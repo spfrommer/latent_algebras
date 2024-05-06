@@ -1,0 +1,1 @@
+python data/gen_inr.py --voronoi_random_max=10 --data_n=10000
