@@ -7,7 +7,7 @@ Samuel Pfrommer, Brendon G. Anderson, Julien Piet, Somayeh Sojoudi\
 2024 International Conference on Machine Learning (ICML)
 
 <p align="center">
-  <img src=".readme_fig.png" width="850"/>
+  <img src="./readme_fig.png" width="850"/>
 </p>
 
 ## Execution
