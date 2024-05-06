@@ -3,7 +3,7 @@
 This code accompanies our paper:
 
 **Transport of Algebraic Structure to Latent Embeddings**\
-Samuel Pfrommer, Brendon G. Anderson, Julien Piet, Somayeh Sojoudi\
+Samuel Pfrommer, Brendon G. Anderson, Somayeh Sojoudi\
 2024 International Conference on Machine Learning (ICML)
 
 <p align="center">
