@@ -54,6 +54,8 @@ body {
   h2 {
     font-weight:300;
     font-size: 25px;
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
   h3 {
     font-weight:250;
@@ -64,7 +66,13 @@ p {
     font-size: 20px;
     line-height: 1.4;
 }
-  
+A:link {
+    COLOR: #5432c2
+}
+A:visited {
+    COLOR: #5432c2
+}
+
 IMG {
   PADDING-RIGHT: 0px;
   PADDING-LEFT: 0px;
@@ -157,7 +165,7 @@ Transport of Algebraic Structure to Latent Embeddings
                 <tr>
                     <td>
 <p align="justify" width="20%">
-Machine learning often aims to produce latent embeddings of inputs which lie in a larger, abstract mathematical space. For example, in the field of 3D modeling, subsets of Euclidean space can be embedded as vectors using implicit neural representations. Such subsets also have a natural algebraic structure including operations (e.g., union) and corresponding laws (e.g., associativity). How can we learn to "union" two sets using only their latent embeddings while respecting associativity? We propose a general procedure for parameterizing latent space operations that are provably consistent with the laws on the input space. This is achieved by learning a bijection from the latent space to a carefully designed <em>mirrored algebra</em> which is constructed on Euclidean space in accordance with desired laws. We evaluate these <em>structural transport nets</em> for a range of mirrored algebras against baselines that operate directly on the latent space. Our experiments provide strong evidence that respecting the underlying algebraic structure of the input space is key for learning accurate and self-consistent operations. 
+Machine learning often aims to produce latent embeddings of inputs which lie in a larger, abstract mathematical space. For example, in the field of 3D modeling, subsets of Euclidean space can be embedded as vectors using implicit neural representations. Such subsets also have a natural algebraic structure including operations (e.g., union) and corresponding laws (e.g., associativity). How can we learn to “union” two sets using only their latent embeddings while respecting associativity? We propose a general procedure for parameterizing latent space operations that are provably consistent with the laws on the input space. This is achieved by learning a bijection from the latent space to a carefully designed <em>mirrored algebra</em> which is constructed on Euclidean space in accordance with desired laws. We evaluate these <em>structural transport nets</em> for a range of mirrored algebras against baselines that operate directly on the latent space. Our experiments provide strong evidence that respecting the underlying algebraic structure of the input space is key for learning accurate and self-consistent operations. 
 </p></td></tr></table>
 </p>
   </div>
@@ -165,7 +173,24 @@ Machine learning often aims to produce latent embeddings of inputs which lie in 
 
 <hr>
 
-<h2 align="center">Learning on the Job Overview</h2>
+<h2 align="center">Algebraic structure in embedding spaces</h2>
+
+<div width="500"><p>
+  <table align=center width=800px>
+                <tr>
+                    <td>
+<p align="justify" width="20%">
+Many learned embeddings derive from mathematical objects with <em>algebraic structure</em>.
+
+Consider the space of subsets of $\mathbb{R}^n$, which can be endowed with algebraic operations consisting of <em>operations</em> (e.g., $\cap$, $\cup$) and <em>laws</em> (e.g., $A \cup B = B \cup A$).
+
+Any particular set in this space can be captured as the sublevel set of a learned network, i.e., an Implicit Neural Representation (INR); we can extract latent embeddings of sets via a autoencoder-style architecture on INR weights.
+
+A similar idea applies to learned functions, probability distributions, and textual embeddings.
+</p></td></tr></table>
+</p>
+  </div>
+
 
 <table border="0" cellspacing="10" cellpadding="0" align="center">
   <tbody>
@@ -177,18 +202,41 @@ Machine learning often aims to produce latent embeddings of inputs which lie in 
   </tbody>
 </table>
 
+
+<div width="500"><p>
+  <table align=center width=800px>
+                <tr>
+                    <td>
+<p align="justify" width="20%">
+These operations are often foundational for a range of downstream tasks where we may only have access to latent embeddings. This leads us to ask a key question:
+</p></td></tr></table>
+</p>
+  </div>
+
+<div width="500"><p>
+  <table align=center width=800px>
+                <tr>
+                    <td>
+<p align="center" width="20%">
+<em>Can we learn operations on the latent space which provably respect the algebraic laws of the underlying space?</em>
+</p></td></tr></table>
+</p>
+  </div>
+
 <hr>
 
-<h2 align="center">Continuous Deployment and Update Cycle</h2>
+<h2 align="center">Transport of structure</h2>
 
-<table border="0" cellspacing="10" cellpadding="0" align="center">
-  <tbody>
-  <tr>
-    <td align="center" valign="middle">
-    </td>
-  </tr>
-  </tbody>
-</table>
+
+<div width="500"><p>
+  <table align=center width=800px>
+                <tr>
+                    <td>
+<p align="justify" width="20%">
+A precise formulation of our method 
+</p></td></tr></table>
+</p>
+  </div>
 
 <hr>
 
