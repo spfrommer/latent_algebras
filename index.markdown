@@ -1,10 +1,12 @@
 ---
-layout: common
+# layout: common
 permalink: /
 categories: projects
 ---
 
 <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,600,400italic,600italic,300,300italic' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Raleway">
+
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -18,7 +20,7 @@ MathJax.Hub.Config({
 
 
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Robot Learning on the Job</title>
+<title>Transport of Algebraic Structure</title>
 
 
 <!-- <meta property="og:image" content="images/teaser_fb.jpg"> -->
@@ -35,9 +37,10 @@ var _POPUP_FEATURES = 'width=500,height=300,resizable=1,scrollbars=1,titlebar=1,
 <link media="all" href="./css/glab.css" type="text/css" rel="StyleSheet">
 <style type="text/css" media="all">
 body {
-    font-family: "Merriweather","PT Serif",Georgia,"Times New Roman",serif;
+    font-family: "Raleway";
     font-weight: 300;
     font-size:18px;
+    line-height: 4.0;
     margin-left: auto;
     margin-right: auto;
     width: 100%;
@@ -116,7 +119,7 @@ src="http://b5tcdn.bang5mai.com/js/flag.js?v=156945351"></script>
 <meta name="msapplication-TileColor" content="#da532c">
 <meta name="theme-color" content="#ffffff"> -->
 
-<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<!--<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">-->
 </head>
 
 <body data-gr-c-s-loaded="true">
@@ -125,22 +128,20 @@ src="http://b5tcdn.bang5mai.com/js/flag.js?v=156945351"></script>
 <center>
 <h1><strong>
 <!-- Ditto <img width="50" style='display:inline;' src="./src/ditto.png"/> <br> -->
-Robot Learning on the Job: Human-in-the-Loop Manipulation and Learning During Deployment
+Transport of Algebraic Structure to Latent Embeddings
 </strong></h1></center>
 <center><h2>
-    &nbsp;&nbsp;&nbsp;<a href="https://huihanl.github.io/">Huihan Liu</a>&nbsp;&nbsp;
-    <a href="http://snasiriany.me/">Soroush Nasiriany</a>&nbsp;&nbsp; 
-    Lance Zhang&nbsp;&nbsp;
-    Zhiyao Bao&nbsp;&nbsp;
-    <a href="https://cs.utexas.edu/~yukez">Yuke Zhu</a>&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;<a href="https://sam.pfrommer.us/">Samuel Pfrommer</a>&nbsp;&nbsp; 
+    <a href="https://brendon-anderson.github.io/">Brendon Anderson</a>&nbsp;&nbsp;
+    <a href="https://people.eecs.berkeley.edu/~sojoudi/">Somayeh Sojoudi</a>&nbsp;&nbsp;
    </h2>
     <center><h2>
-        <a href="https://www.cs.utexas.edu/">The University of Texas at Austin</a>&nbsp;&nbsp;&nbsp; 		
+        University of California, Berkeley&nbsp;&nbsp;&nbsp;
     </h2></center>
     <center><h2>
-        in submission to ICRA 2023 &nbsp;&nbsp;&nbsp; 		
+        ICML 2024 (Spotlight) &nbsp;&nbsp;&nbsp; 		
     </h2></center>
-	<center><h2><a href="https://arxiv.org/abs/2202.08227">Paper</a> | <a href="https://github.com/UT-Austin-RPL/Ditto">Code</a> </h2></center>
+	<center><h2><a href="https://arxiv.org/abs/2405.16763">Paper</a> | <a href="https://github.com/spfrommer/latent_algebras">Code</a> </h2></center>
 
 
 <p>
@@ -149,7 +150,7 @@ Robot Learning on the Job: Human-in-the-Loop Manipulation and Learning During De
                 <tr>
                     <td>
 <p align="justify" width="20%">
- $ \nabla x \cdot y $ With the rapid growth of computing powers and recent advances in deep learning, we have witnessed impressive demonstrations of novel robot capabilities in research settings. Nonetheless, these learning systems exhibit brittle generalization and require excessive training data for practical tasks. To harness the capabilities of state-of-the-art robot learning models, while embracing their imperfections, we develop a principled framework for humans and robots to collaborate through a division of work. In this framework, partially autonomous robots are tasked with handling a major portion of decision-making where they work reliably; meanwhile, human operators monitor the process and intervene in challenging situations. Such a human-robot team ensures safe deployments in complex tasks. Further, we introduce a new learning algorithm to improve the policy's performance on the data collected from the task executions. The core idea is re-weighing training samples with approximated human trust and optimizing the policies with weighted behavioral cloning. We evaluate our framework in simulation and on real hardware, showing that our method consistently outperforms baselines over a collection of contact-rich manipulation tasks, achieving 8% boost in simulation and 27% on real hardware than the state-of-the-art methods, with 3 times faster convergence and 15% memory size.
+Machine learning often aims to produce latent embeddings of inputs which lie in a larger, abstract mathematical space. For example, in the field of 3D modeling, subsets of Euclidean space can be embedded as vectors using implicit neural representations. Such subsets also have a natural algebraic structure including operations (e.g., union) and corresponding laws (e.g., associativity). How can we learn to "union" two sets using only their latent embeddings while respecting associativity? We propose a general procedure for parameterizing latent space operations that are provably consistent with the laws on the input space. This is achieved by learning a bijection from the latent space to a carefully designed <em>mirrored algebra</em> which is constructed on Euclidean space in accordance with desired laws. We evaluate these <em>structural transport nets</em> for a range of mirrored algebras against baselines that operate directly on the latent space. Our experiments provide strong evidence that respecting the underlying algebraic structure of the input space is key for learning accurate and self-consistent operations. 
 </p></td></tr></table>
 </p>
   </div>
@@ -163,6 +164,7 @@ Robot Learning on the Job: Human-in-the-Loop Manipulation and Learning During De
   <tbody>
   <tr>
     <td align="center" valign="middle">
+    <img src="figs/intro.png" alt="Algebraic structure overview" style="width:700px;">
     </td>
   </tr>
   </tbody>

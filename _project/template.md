@@ -1,5 +1,5 @@
 ---
-layout: common
+# layout: common
 permalink: /project
 categories: projects
 ---
