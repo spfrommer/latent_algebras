@@ -49,14 +49,21 @@ body {
   
   h1 {
     font-weight:300;
+    font-size: 35px;
   }
   h2 {
     font-weight:300;
+    font-size: 25px;
   }
   h3 {
     font-weight:250;
     font-size: 25px;
   }
+
+p {
+    font-size: 20px;
+    line-height: 1.4;
+}
   
 IMG {
   PADDING-RIGHT: 0px;
@@ -158,7 +165,7 @@ Machine learning often aims to produce latent embeddings of inputs which lie in 
 
 <hr>
 
-<h1 align="center">Learning on the Job Overview</h1>
+<h2 align="center">Learning on the Job Overview</h2>
 
 <table border="0" cellspacing="10" cellpadding="0" align="center">
   <tbody>
@@ -172,7 +179,7 @@ Machine learning often aims to produce latent embeddings of inputs which lie in 
 
 <hr>
 
-<h1 align="center">Continuous Deployment and Update Cycle</h1>
+<h2 align="center">Continuous Deployment and Update Cycle</h2>
 
 <table border="0" cellspacing="10" cellpadding="0" align="center">
   <tbody>
@@ -185,7 +192,7 @@ Machine learning often aims to produce latent embeddings of inputs which lie in 
 
 <hr>
 
-<h1 align="center">Method: Intervention-based Reweighting Scheme</h1>
+<h2 align="center">Method: Intervention-based Reweighting Scheme</h2>
 
 <table border="0" cellspacing="10" cellpadding="0" align="center">
   <tbody>
@@ -198,7 +205,7 @@ Machine learning often aims to produce latent embeddings of inputs which lie in 
 
 <hr>
 
-<h1 align="center">Experiment Results</h1>
+<h2 align="center">Experiment Results</h2>
 
 <table border="0" cellspacing="10" cellpadding="0" align="center">
   <tbody><tr><td>
