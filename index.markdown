@@ -189,16 +189,7 @@ Implicit Neural Representations (INRs) capture subsets as the sublevel sets of l
 </p>
   </div>
 
-
-<table border="0" cellspacing="10" cellpadding="0" align="center">
-  <tbody>
-  <tr>
-    <td align="center" valign="middle">
-    <img src="figs/autoencoder.png" alt="INR autoencoder" style="width:700px;">
-    </td>
-  </tr>
-  </tbody>
-</table>
+<img src="figs/autoencoder.png" alt="INR autoencoder" style="width:700px;">
 
 
 <div width="500"><p>
@@ -206,7 +197,7 @@ Implicit Neural Representations (INRs) capture subsets as the sublevel sets of l
                 <tr>
                     <td>
 <p align="justify" width="20%">
-We thus assume encoder/decoder maps $E$ and $D$ connecting latent embeddings in $\mathbb{R}^l$ to elements of the power set $\mathrm{Pow}(\mathbb{R}^n)$, where the latter <em>source space</em> carries algebraic structure.
+We thus assume encoder/decoder maps $E$ and $D$ connecting latent embeddings in $L=\mathbb{R}^l$ to elements of the power set $\mathrm{Pow}(\mathbb{R}^n)$, where the latter <em>source space</em> carries algebraic structure.
 </p></td></tr></table>
 </p>
   </div>
@@ -222,22 +213,12 @@ The source algebra operations are often foundational for downstream tasks where 
 
     $$ \phantom{\mathrm{(informal)}} \quad \quad A \cup^{\mathcal{S}} B \approx D(E(A) \cup^{\mathcal{L}} E(B)), \quad \quad \mathrm{(informal)}$$
 
-where $\cup^\mathcal{S}: \mathrm{Pow}(\mathbb{R}^n) \times \mathrm{Pow}(\mathbb{R}^n) \to \mathrm{Pow}(\mathbb{R}^n)$ is the standard set union and $\cup^{\mathcal{L}}: \mathbb{R}^l \times \mathbb{R}^l \to \mathbb{R}^l$ is a learned latent-space analog. We could imagine directly parameterizing maps $\cup^{\mathcal{L}}: \mathbb{R}^l \times \mathbb{R}^l \to \mathbb{R}^l$ and $\cap^{\mathcal{L}}: \mathbb{R}^l \times \mathbb{R}^l \to \mathbb{R}^l$ as MLPs:
+where $\cup^\mathcal{S}: \mathrm{Pow}(\mathbb{R}^n) \times \mathrm{Pow}(\mathbb{R}^n) \to \mathrm{Pow}(\mathbb{R}^n)$ is the standard set union and $\cup^{\mathcal{L}}: L \times L \to L$ is a learned latent-space analog. We could imagine directly parameterizing maps $\cup^{\mathcal{L}}: L \times L \to L$ and $\cap^{\mathcal{L}}: L \times L \to L$ as MLPs:
 </p></td></tr></table>
 </p>
   </div>
 
-
-<table border="0" cellspacing="10" cellpadding="0" align="center">
-  <tbody>
-  <tr>
-    <td align="center" valign="middle">
-    <img src="figs/operations.png" alt="Learned operations" style="width:700px;">
-    </td>
-  </tr>
-  </tbody>
-</table>
-
+<img src="figs/operations.png" alt="Learned operations" style="width:700px;">
 
 <div width="500"><p>
   <table align=center width=800px>
@@ -270,17 +251,7 @@ While we focus our work on sets for exposition, we note that this connection bet
 </p>
   </div>
 
-
-<table border="0" cellspacing="10" cellpadding="0" align="center">
-  <tbody>
-  <tr>
-    <td align="center" valign="middle">
-    <img src="figs/intro.png" alt="Algebraic structure overview" style="width:700px;">
-    </td>
-  </tr>
-  </tbody>
-</table>
-
+<img src="figs/intro.png" alt="Algebraic structure overview" style="width:700px;">
 
 
 <hr>
@@ -293,31 +264,55 @@ While we focus our work on sets for exposition, we note that this connection bet
                 <tr>
                     <td>
 <p align="justify" width="20%">
-A precise formulation of our method relies on machinery from universal algebra. W
+A precise formulation of our method relies on machinery from universal algebra. We provide an informal explanation here and refer to the <a href="https://arxiv.org/abs/2405.16763">full paper</a> for additional details.
 </p></td></tr></table>
 </p>
   </div>
 
+
+
+<div width="500"><p>
+  <table align=center width=800px>
+                <tr>
+                    <td>
+<p align="justify" width="20%">
+Our key idea is to parameterize a <em>learned bijection</em> $\varphi: L \to M$, where the <em>mirrored space</em> $M = \mathbb{R}^l$ is of the same dimensionality of $L$. We endow $M$ with one operation for each operation on the source algebra, attempting to ensure that these operations satisfy the required laws. For instance, we can define mirrored-space operations $\cup^{\mathcal{M}}: M \times M \to M, \cup^{\mathcal{M}}: M \times M \to M$ which form a <em>Riesz space</em>:
+
+$$ a \cup^{\mathcal{M}} b = \mathrm{max}(a, b), $$
+$$ a \cap^{\mathcal{M}} b = \mathrm{min}(a, b). $$
+
+This choice of operations satisfies all the same laws as $\cup^{\mathcal{S}}$ and $\cap^{\mathcal{S}}$ on the space of sets: commutativity, associativity, absorption, and distributivity. We can then transfer the operations $f \in \{\cup, \cap\}$ to the latent space via $\varphi$:
+
+$$
+	f^{\mathcal{L}}(z_1,\dots,z_n) := \varphi^{-1}\big(f^{\mathcal{M}}(\varphi(z_1),\dots,\varphi(z_n))\big).
+$$
+
+Crucially, since $\varphi$ is a learned bijection, a good choice of operations on $M$ yields operations on $L$ which <em>provably satisfy</em> the desired source algebra laws. Details on how we train $\varphi$ and choose mirrored-space operations are deferred to the full paper.
+
+<img src="figs/transport.png" alt="Algebraic structure overview" style="width:700px;">
+
 <hr>
 
-<h2 align="center">Method: Intervention-based Reweighting Scheme</h2>
+<h2 align="center">Experimental results</h2>
 
-<table border="0" cellspacing="10" cellpadding="0" align="center">
-  <tbody>
-  <tr>
-    <td align="center" valign="middle">
-    </td>
-  </tr>
-  </tbody>
-</table>
-
-<hr>
-
-<h2 align="center">Experiment Results</h2>
 
 <table border="0" cellspacing="10" cellpadding="0" align="center">
   <tbody><tr><td>
-  <p align="justify" width="20%">Our system ensures safe and reliable execution through human-robot teaming. We evaluated the autonomous policy performance of our human-in-the-loop framework on 4 tasks. As the autonomous policy improves over long-term deployment, the amount of human workload decreases.
+  <p align="justify" width="20%">
+Our problem setting concerns learning $\cap$ and $\cup$ over a dataset of synthetic sets in $\mathbb{R}^2$. We evaluate a variety of mirrored space operation combinations and two directly parameterized MLP references. 
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<img src="figs/results.png" alt="Results" style="width:700px;">
+
+<table border="0" cellspacing="10" cellpadding="0" align="center">
+  <tbody><tr><td>
+  <p align="justify" width="20%">
+The left-hand figure above plots the performance of learned operations against the number of satisfied source algebra laws. Each scatter point represents one combination of learned operations, with the solid line capturing the mean. The increasing trend confirm our primary hypothesis: learned latent-space operations achieve higher performance when constructed to satisfy source algeba laws.
 </p>
 </td>
 </tr>
@@ -325,116 +320,29 @@ A precise formulation of our method relies on machinery from universal algebra. 
 </table>
 
 <table border="0" cellspacing="10" cellpadding="0" align="center">
-  <tbody><tr>  <td align="center" valign="middle">
-  </td>
-  </tr>
-
-</tbody>
-</table>
-
-<table border="0" cellspacing="10" cellpadding="0" align="center">
   <tbody><tr><td>
-  <p align="justify" width="20%">We conduct 3 rounds of robot deployments and policy updates. Here we present Round 1 and Round 3 results of Ours and baseline IWR. We show how for Ours policy performance improve over rounds, and how Ours outperforms IWR baseline. </p>
+  <p align="justify" width="20%">
+  The right-hand figure examines the <em>self-consistency</em> of learned operations; do they yield similar results for equivalent terms? For instance, does the prediction of $A \cup B$ match $B \cup A$? The Riesz space transported algebra is perfectly self-consistent as it satisfies all source algebra laws. However, all other learned operations degrade as more random laws are applied.
+</p>
 </td>
 </tr>
 </tbody>
 </table>
 
-<table border="0" cellspacing="10" cellpadding="0" align="center">
-  <tbody><tr>  <td align="center" valign="middle">
-  </td>
-  </tr>
+<hr>
 
-</tbody>
-</table>
-
-<h2 align="center">Gear Insertion (Real)</h2>
-
-<h3 align="center">Ours, Round 1</h3>
-
-<table border="0" cellspacing="10" cellpadding="0" align="center">
-  <tbody><tr>  <td align="center" valign="middle">
-  </td>
-  </tr>
-  </tbody>
-</table>
-
-
-<h3 align="center">IWR, Round 1</h3>
-
-<table border="0" cellspacing="10" cellpadding="0" align="center">
-  <tbody><tr>  <td align="center" valign="middle">
-  </td>
-  </tr>
-  </tbody>
-</table>
-
-<h3 align="center">Ours, Round 3</h3>
-
-<table border="0" cellspacing="10" cellpadding="0" align="center">
-  <tbody><tr>  <td align="center" valign="middle">
-  </td>
-  </tr>
-  </tbody>
-</table>
-
-<h3 align="center">IWR, Round 3</h3>
-
-<table border="0" cellspacing="10" cellpadding="0" align="center">
-  <tbody><tr>  <td align="center" valign="middle">
-  </td>
-  </tr>
-  </tbody>
-</table>
-
-<h2 align="center">Coffee Pod packing (Real)</h2>
-
-<h3 align="center">Ours, Round 1</h3>
-
-<table border="0" cellspacing="10" cellpadding="0" align="center">
-  <tbody><tr>  <td align="center" valign="middle">
-  </td>
-  </tr>
-  </tbody>
-</table>
-
-<h3 align="center">IWR, Round 1</h3>
-
-<table border="0" cellspacing="10" cellpadding="0" align="center">
-  <tbody><tr>  <td align="center" valign="middle">
-  </td>
-  </tr>
-  </tbody>
-</table>
-
-<h3 align="center">Ours, Round 3</h3>
-
-<table border="0" cellspacing="10" cellpadding="0" align="center">
-  <tbody><tr>  <td align="center" valign="middle">
-  </td>
-  </tr>
-  </tbody>
-</table>
-
-<h3 align="center">IWR, Round 3</h3>
-
-<table border="0" cellspacing="10" cellpadding="0" align="center">
-  <tbody><tr>  <td align="center" valign="middle">
-  </td>
-  </tr>
-  </tbody>
-</table>
+<h2 align="center">Reference</h2>
 
 <table align=center width=800px>
               <tr>
                   <td>
                   <left>
 <pre><code style="display:block; overflow-x: auto">
-@inproceedings{jiang2022ditto,
-   title={Ditto: Building Digital Twins of Articulated Objects from Interaction},
-   author={Jiang, Zhenyu and Hsu, Cheng-Chun and Zhu, Yuke},
-   booktitle={arXiv preprint arXiv:2202.08227},
-   year={2022}
+@inproceedings{pfrommer2024transport,
+   title={Transport of Algebraic Structure to Latent Embeddings},
+   author={Pfrommer, Samuel and Anderson, Brendon and Sojoudi, Somayeh},
+   booktitle={International Conference on Machine Learning},
+   year={2024}
 }
 </code></pre>
 </left></td></tr></table>
