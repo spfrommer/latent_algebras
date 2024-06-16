@@ -156,7 +156,7 @@ Transport of Algebraic Structure to Latent Embeddings
     <center><h2>
         ICML 2024 (Spotlight) &nbsp;&nbsp;&nbsp; 		
     </h2></center>
-	<center><h2><a href="https://arxiv.org/abs/2405.16763">Paper</a> | <a href="https://github.com/spfrommer/latent_algebras">Code</a> </h2></center>
+	<center><h2><a href="https://arxiv.org/abs/2405.16763"><img height="20" style='display:inline;' src="./icons/pdf.png"/> Paper</a> | <a href="https://github.com/spfrommer/latent_algebras"><img height="20" style='display:inline;' src="./icons/github.png"/> Code</a> </h2></center>
 
 
 <p>
@@ -180,7 +180,7 @@ Machine learning often aims to produce latent embeddings of inputs which lie in 
                 <tr>
                     <td>
 <p align="justify" width="20%">
-Learned embeddings often derive from mathematical objects with <em>algebraic structure</em>.
+Learned embeddings represent mathematical objects with <em>algebraic structure</em>.
 
 Consider the space of subsets of $\mathbb{R}^n$, which can be endowed with <em>operations</em> (e.g., $\cap$, $\cup$) and <em>laws</em> (e.g., $A \cup B = B \cup A$).
 
@@ -197,7 +197,7 @@ Implicit Neural Representations (INRs) capture subsets as the sublevel sets of l
                 <tr>
                     <td>
 <p align="justify" width="20%">
-We thus assume encoder/decoder maps $E$ and $D$ connecting latent embeddings in $L=\mathbb{R}^l$ to elements of the power set $\mathrm{Pow}(\mathbb{R}^n)$, where the latter <em>source space</em> carries algebraic structure.
+We assume we are provided with encoder/decoder maps $E$ and $D$ connecting latent embeddings in $L=\mathbb{R}^l$ to elements of the power set $\mathrm{Pow}(\mathbb{R}^n)$, where the latter <em>source space</em> carries algebraic structure.
 </p></td></tr></table>
 </p>
   </div>
@@ -217,7 +217,6 @@ where $\cup^\mathcal{S}: \mathrm{Pow}(\mathbb{R}^n) \times \mathrm{Pow}(\mathbb{
 </p></td></tr></table>
 </p>
   </div>
-
 <img src="figs/operations.png" alt="Learned operations" style="width:700px;">
 
 <div width="500"><p>
@@ -276,7 +275,7 @@ A precise formulation of our method relies on machinery from universal algebra. 
                 <tr>
                     <td>
 <p align="justify" width="20%">
-Our key idea is to parameterize a <em>learned bijection</em> $\varphi: L \to M$, where the <em>mirrored space</em> $M = \mathbb{R}^l$ is of the same dimensionality of $L$. We endow $M$ with one operation for each operation on the source algebra, attempting to ensure that these operations satisfy the required laws. For instance, we can define mirrored-space operations $\cup^{\mathcal{M}}: M \times M \to M, \cup^{\mathcal{M}}: M \times M \to M$ which form a <em>Riesz space</em>:
+Our key idea is to parameterize a <em>learned bijection</em> $\varphi: L \to M$, where the <em>mirrored space</em> $M = \mathbb{R}^l$ is of the same dimensionality as $L$. We endow $M$ with one operation for each operation on the source algebra, attempting to ensure that these operations satisfy the required laws. For instance, we can define mirrored-space operations $\cup^{\mathcal{M}}: M \times M \to M, \cup^{\mathcal{M}}: M \times M \to M$ which form a <em>Riesz space</em>:
 
 $$ a \cup^{\mathcal{M}} b = \mathrm{max}(a, b), $$
 $$ a \cap^{\mathcal{M}} b = \mathrm{min}(a, b). $$
