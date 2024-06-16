@@ -173,20 +173,99 @@ Machine learning often aims to produce latent embeddings of inputs which lie in 
 
 <hr>
 
-<h2 align="center">Algebraic structure in embedding spaces</h2>
+<h2 align="center">Algebraic structure and embedding spaces</h2>
 
 <div width="500"><p>
   <table align=center width=800px>
                 <tr>
                     <td>
 <p align="justify" width="20%">
-Many learned embeddings derive from mathematical objects with <em>algebraic structure</em>.
+Learned embeddings often derive from mathematical objects with <em>algebraic structure</em>.
 
-Consider the space of subsets of $\mathbb{R}^n$, which can be endowed with algebraic operations consisting of <em>operations</em> (e.g., $\cap$, $\cup$) and <em>laws</em> (e.g., $A \cup B = B \cup A$).
+Consider the space of subsets of $\mathbb{R}^n$, which can be endowed with <em>operations</em> (e.g., $\cap$, $\cup$) and <em>laws</em> (e.g., $A \cup B = B \cup A$).
 
-Any particular set in this space can be captured as the sublevel set of a learned network, i.e., an Implicit Neural Representation (INR); we can extract latent embeddings of sets via a autoencoder-style architecture on INR weights.
+Implicit Neural Representations (INRs) capture subsets as the sublevel sets of learned networks; we can then extract latent embeddings of sets via an autoencoder-style architecture on INR weights:
+</p></td></tr></table>
+</p>
+  </div>
 
-A similar idea applies to learned functions, probability distributions, and textual embeddings.
+
+<table border="0" cellspacing="10" cellpadding="0" align="center">
+  <tbody>
+  <tr>
+    <td align="center" valign="middle">
+    <img src="figs/autoencoder.png" alt="INR autoencoder" style="width:700px;">
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+
+<div width="500"><p>
+  <table align=center width=800px>
+                <tr>
+                    <td>
+<p align="justify" width="20%">
+We thus assume encoder/decoder maps $E$ and $D$ connecting latent embeddings in $\mathbb{R}^l$ to elements of the power set $\mathrm{Pow}(\mathbb{R}^n)$, where the latter <em>source space</em> carries algebraic structure.
+</p></td></tr></table>
+</p>
+  </div>
+
+
+
+<div width="500"><p>
+  <table align=center width=800px>
+                <tr>
+                    <td>
+<p align="justify" width="20%">
+The source algebra operations are often foundational for downstream tasks where we may only have access to latent embeddings. We thus intuitively want to learn latent-space operations which yield the correct results in set space. Informally, for the union operation this would mean that
+
+    $$ \phantom{\mathrm{(informal)}} \quad \quad A \cup^{\mathcal{S}} B \approx D(E(A) \cup^{\mathcal{L}} E(B)), \quad \quad \mathrm{(informal)}$$
+
+where $\cup^\mathcal{S}: \mathrm{Pow}(\mathbb{R}^n) \times \mathrm{Pow}(\mathbb{R}^n) \to \mathrm{Pow}(\mathbb{R}^n)$ is the standard set union and $\cup^{\mathcal{L}}: \mathbb{R}^l \times \mathbb{R}^l \to \mathbb{R}^l$ is a learned latent-space analog. We could imagine directly parameterizing maps $\cup^{\mathcal{L}}: \mathbb{R}^l \times \mathbb{R}^l \to \mathbb{R}^l$ and $\cap^{\mathcal{L}}: \mathbb{R}^l \times \mathbb{R}^l \to \mathbb{R}^l$ as MLPs:
+</p></td></tr></table>
+</p>
+  </div>
+
+
+<table border="0" cellspacing="10" cellpadding="0" align="center">
+  <tbody>
+  <tr>
+    <td align="center" valign="middle">
+    <img src="figs/operations.png" alt="Learned operations" style="width:700px;">
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+
+<div width="500"><p>
+  <table align=center width=800px>
+                <tr>
+                    <td>
+<p align="justify" width="20%">
+But such a naive parameterization would not capture the symmetries provided by the laws of the source algebra; $D(E(A) \cup^{\mathcal{L}} E(B))$ and $D(E(B) \cup^{\mathcal{L}} E(A))$ could yield completely different sets! This leads us to ask a key question:
+</p></td></tr></table>
+</p>
+  </div>
+
+<div width="500"><p>
+  <table align=center width=800px>
+                <tr>
+                    <td>
+<p align="center" width="20%">
+<em>Can we learn operations on the latent space which provably respect the algebraic laws of the source algebra?</em>
+</p></td></tr></table>
+</p>
+  </div>
+
+
+<div width="500"><p>
+  <table align=center width=800px>
+                <tr>
+                    <td>
+<p align="justify" width="20%">
+While we focus our work on sets for exposition, we note that this connection between latent embeddings and source-space algebraic structure is quite general. A similar idea applies to learned functions, probability distributions, and textual embeddings.
 </p></td></tr></table>
 </p>
   </div>
@@ -203,25 +282,6 @@ A similar idea applies to learned functions, probability distributions, and text
 </table>
 
 
-<div width="500"><p>
-  <table align=center width=800px>
-                <tr>
-                    <td>
-<p align="justify" width="20%">
-These operations are often foundational for a range of downstream tasks where we may only have access to latent embeddings. This leads us to ask a key question:
-</p></td></tr></table>
-</p>
-  </div>
-
-<div width="500"><p>
-  <table align=center width=800px>
-                <tr>
-                    <td>
-<p align="center" width="20%">
-<em>Can we learn operations on the latent space which provably respect the algebraic laws of the underlying space?</em>
-</p></td></tr></table>
-</p>
-  </div>
 
 <hr>
 
@@ -233,7 +293,7 @@ These operations are often foundational for a range of downstream tasks where we
                 <tr>
                     <td>
 <p align="justify" width="20%">
-A precise formulation of our method 
+A precise formulation of our method relies on machinery from universal algebra. W
 </p></td></tr></table>
 </p>
   </div>
