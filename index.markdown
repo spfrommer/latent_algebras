@@ -127,13 +127,13 @@ table
 </style>
 
 <style>
-  .header {
+  .site-header {
     display: none;
   }
 </style>
 
 <style>
-  .footer {
+  .site-footer {
     display: none;
   }
 </style>
