@@ -27,9 +27,9 @@ github_username: spfrommer
 
 # Build settings
 theme: minima
-plugins:
-  - jekyll-feed
-  - jekyll-seo-tag
+#plugins:
+  #- jekyll-feed
+  #- jekyll-seo-tag
 
 collections:
     project:
