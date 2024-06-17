@@ -18,13 +18,13 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Robot Learning on the Job
-email: huihanl@utexas.edu
+title: Transport of Algebraic Structure to Latent Embeddings
+email: sam.pfrommer@berkeley.edu
 description: >- # this means to ignore newlines until "baseurl:"
-  Website for paper "Robot Learning on the Job: Human-in-the-Loop Manipulation and Learning During Deployment"
+  Website for paper "Transport of Algebraic Structure to Latent Embeddings"
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
-github_username: huihanl
+github_username: spfrommer
 
 # Build settings
 theme: minima
