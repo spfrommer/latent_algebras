@@ -199,7 +199,7 @@ Machine learning often aims to produce latent embeddings of inputs which lie in 
                 <tr>
                     <td>
 <p align="justify" width="20%">
-Learned embeddings represent mathematical objects with <em>algebraic structure</em>.
+Learned embeddings often represent mathematical objects with <em>algebraic structure</em>.
 
 Consider the space of subsets of $\mathbb{R}^n$, which can be endowed with <em>operations</em> (e.g., $\cap$, $\cup$) and <em>laws</em> (e.g., $A \cup B = B \cup A$).
 
@@ -216,7 +216,7 @@ Implicit Neural Representations (INRs) capture subsets as the sublevel sets of l
                 <tr>
                     <td>
 <p align="justify" width="20%">
-We assume we are provided with encoder/decoder maps $E$ and $D$ connecting latent embeddings in $L=\mathbb{R}^l$ to elements of the power set $\mathrm{Pow}(\mathbb{R}^n)$, where the latter <em>source space</em> carries algebraic structure.
+In this work, we assume that we are provided with encoder/decoder maps $E$ and $D$ connecting latent embeddings in $L=\mathbb{R}^l$ to elements of the power set $\mathrm{Pow}(\mathbb{R}^n)$, where the latter <em>source space</em> carries algebraic structure.
 </p></td></tr></table>
 </p>
   </div>
@@ -294,11 +294,11 @@ A precise formulation of our method relies on machinery from universal algebra. 
                 <tr>
                     <td>
 <p align="justify" width="20%">
-Our key idea is to parameterize a <em>learned bijection</em> $\varphi: L \to M$, where the <em>mirrored space</em> $M = \mathbb{R}^l$ is of the same dimensionality as $L$. We endow $M$ with one operation for each operation on the source algebra, attempting to ensure that these operations satisfy the required laws. For instance, we can define mirrored-space operations $\cup^{\mathcal{M}}: M \times M \to M, \cup^{\mathcal{M}}: M \times M \to M$ which form a <em>Riesz space</em>:
+Our key idea is to parameterize a <em>learned bijection</em> $\varphi: L \to M$, where the <em>mirrored space</em> $M = \mathbb{R}^l$ is of the same dimensionality as $L$. We endow $M$ with one operation for each operation on the source algebra, attempting to ensure that these operations satisfy all required laws. For instance, we can define mirrored-space operations $\cup^{\mathcal{M}}: M \times M \to M, \cup^{\mathcal{M}}: M \times M \to M$ which form a <em>Riesz space</em>:
 
 $$ \begin{aligned} a \cup^{\mathcal{M}} b &= \mathrm{max}(a, b), \\ a \cap^{\mathcal{M}} b &= \mathrm{min}(a, b). \end{aligned} $$
 
-This choice of operations satisfies all the same laws as $\cup^{\mathcal{S}}$ and $\cap^{\mathcal{S}}$ on the space of sets: commutativity, associativity, absorption, and distributivity. We can then transfer the operations $f \in \{\cup, \cap\}$ to the latent space via $\varphi$:
+This choice of operations satisfies all the same laws as $\cup^{\mathcal{S}}$ and $\cap^{\mathcal{S}}$ do for the space of sets: commutativity, associativity, absorption, and distributivity. We can then transfer the operations $f \in \{\cup, \cap\}$ to the latent space via $\varphi$:
 
 $$
 	f^{\mathcal{L}}(z_1,\dots,z_n) := \varphi^{-1}\big(f^{\mathcal{M}}(\varphi(z_1),\dots,\varphi(z_n))\big).
@@ -339,7 +339,7 @@ The left-hand figure above plots the performance of learned operations against t
 <table border="0" cellspacing="10" cellpadding="0" align="center">
   <tbody><tr><td>
   <p align="justify" width="20%">
-  The right-hand figure examines the <em>self-consistency</em> of learned operations; do they yield similar results for equivalent terms? For instance, does the prediction of $A \cup B$ match $B \cup A$? The Riesz space transported algebra is perfectly self-consistent as it satisfies all source algebra laws. However, all other learned operations degrade as more random laws are applied.
+  The right-hand figure examines the <em>self-consistency</em> of learned operations; do they yield similar results for equivalent terms? For instance, does the prediction for $A \cup B$ match $B \cup A$? The Riesz space transported algebra is perfectly self-consistent as it satisfies all source algebra laws. However, all other learned operations degrade as more random laws are applied.
 </p>
 </td>
 </tr>
