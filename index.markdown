@@ -203,7 +203,9 @@ Learned embeddings often represent mathematical objects with <em>algebraic struc
 
 Consider the space of subsets of $\mathbb{R}^n$, which can be endowed with <em>operations</em> (e.g., $\cap$, $\cup$) and <em>laws</em> (e.g., $A \cup B = B \cup A$).
 
-Implicit Neural Representations (INRs) capture subsets as the sublevel sets of learned networks; we can then extract latent embeddings of sets via an autoencoder-style architecture on INR weights:
+Implicit Neural Representations (INRs) capture subsets as the sublevel sets of learned networks; we can then extract latent embeddings $z$ of sets via an autoencoder-style architecture on INR weights $\phi$.
+
+Specifically, we assume that we are provided with encoder/decoder maps $E$ and $D$ connecting latent embeddings in $L=\mathbb{R}^l$ to elements of the power set $\mathcal{P}(\mathbb{R}^n)$, where the latter <em>source space</em> carries algebraic structure.
 </p></td></tr></table>
 </p>
   </div>
@@ -216,23 +218,11 @@ Implicit Neural Representations (INRs) capture subsets as the sublevel sets of l
                 <tr>
                     <td>
 <p align="justify" width="20%">
-In this work, we assume that we are provided with encoder/decoder maps $E$ and $D$ connecting latent embeddings in $L=\mathbb{R}^l$ to elements of the power set $\mathrm{Pow}(\mathbb{R}^n)$, where the latter <em>source space</em> carries algebraic structure.
-</p></td></tr></table>
-</p>
-  </div>
-
-
-
-<div width="500"><p>
-  <table align=center width=800px>
-                <tr>
-                    <td>
-<p align="justify" width="20%">
-The source algebra operations are often foundational for downstream tasks where we may only have access to latent embeddings. We thus intuitively want to learn latent-space operations which yield the correct results in set space. Informally, for the union operation this would mean that
+The source algebra operations (e.g., $\cup$ and $\cap$) are often foundational for downstream tasks where we may only have access to latent embeddings. We thus intuitively want to learn latent-space operations which yield the correct results in set space. Informally, for the union operation this would mean that
 
     $$ \phantom{\mathrm{(informal)}} \quad \quad A \cup^{\mathcal{S}} B \approx D(E(A) \cup^{\mathcal{L}} E(B)), \quad \quad \mathrm{(informal)}$$
 
-where $\cup^\mathcal{S}: \mathrm{Pow}(\mathbb{R}^n) \times \mathrm{Pow}(\mathbb{R}^n) \to \mathrm{Pow}(\mathbb{R}^n)$ is the standard set union and $\cup^{\mathcal{L}}: L \times L \to L$ is a learned latent-space analog. We could imagine directly parameterizing maps $\cup^{\mathcal{L}}: L \times L \to L$ and $\cap^{\mathcal{L}}: L \times L \to L$ as MLPs:
+where $\cup^\mathcal{S}: \mathcal{P}(\mathbb{R}^n) \times \mathcal{P}(\mathbb{R}^n) \to \mathcal{P}(\mathbb{R}^n)$ is the standard set union and $\cup^{\mathcal{L}}: L \times L \to L$ is a learned latent-space analog. We could imagine directly parameterizing maps $\cup^{\mathcal{L}}: L \times L \to L$ and $\cap^{\mathcal{L}}: L \times L \to L$ as MLPs:
 </p></td></tr></table>
 </p>
   </div>
@@ -264,7 +254,7 @@ But such a naive parameterization would not capture the symmetries provided by t
                 <tr>
                     <td>
 <p align="justify" width="20%">
-While we focus our work on sets for exposition, we note that this connection between latent embeddings and source-space algebraic structure is quite general. A similar idea applies to learned functions, probability distributions, and textual embeddings.
+While we focus our work on sets for exposition, we note that this connection between latent embeddings and source-space algebraic structure is quite general. A similar idea applies to learned (continuous) functions, probability distributions, and textual embeddings.
 </p></td></tr></table>
 </p>
   </div>
