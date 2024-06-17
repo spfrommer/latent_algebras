@@ -4,6 +4,8 @@ permalink: /
 categories: projects
 ---
 
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
 <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,600,400italic,600italic,300,300italic' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Raleway">
 
@@ -220,12 +222,12 @@ Specifically, we assume that we are provided with encoder/decoder maps $E$ and $
 <p align="justify" width="20%">
 The source algebra operations (e.g., $\cup$ and $\cap$) are often foundational for downstream tasks where we may only have access to latent embeddings. We thus intuitively want to learn latent-space operations which yield the correct results in set space. Informally, for the union operation this would mean that
 
-    $$ \phantom{\mathrm{(informal)}} \quad \quad A \cup^{\mathcal{S}} B \approx D(E(A) \cup^{\mathcal{L}} E(B)), \quad \quad \mathrm{(informal)}$$
 
 where $\cup^\mathcal{S}: \mathcal{P}(\mathbb{R}^n) \times \mathcal{P}(\mathbb{R}^n) \to \mathcal{P}(\mathbb{R}^n)$ is the standard set union and $\cup^{\mathcal{L}}: L \times L \to L$ is a learned latent-space analog. We could imagine directly parameterizing maps $\cup^{\mathcal{L}}: L \times L \to L$ and $\cap^{\mathcal{L}}: L \times L \to L$ as MLPs:
 </p></td></tr></table>
 </p>
   </div>
+
 <img src="figs/operations.png" alt="Learned operations" style="width:700px;">
 
 <div width="500"><p>
