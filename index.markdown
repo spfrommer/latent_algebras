@@ -67,6 +67,11 @@ body {
     font-size: 25px;
   }
 
+hr {
+    margin-top:25px;
+    margin-bottom:15px;
+}
+
 p {
     font-size: 20px;
     line-height: 1.4;
@@ -85,7 +90,11 @@ IMG {
   PADDING-BOTTOM: 0px;
   PADDING-TOP: 0px;
    display:block;
-   margin:auto;  
+}
+
+.body-img {
+  margin-top: 40px;
+  margin-bottom: 30px;
 }
 #primarycontent {
   MARGIN-LEFT: auto; ; WIDTH: expression(document.body.clientWidth >
@@ -163,8 +172,8 @@ table
 Transport of Algebraic Structure to Latent Embeddings
 </strong></h1></center>
 <center><h2>
-    &nbsp;&nbsp;&nbsp;<a href="https://sam.pfrommer.us/">Samuel Pfrommer</a>&nbsp;&nbsp; 
-    <a href="https://brendon-anderson.github.io/">Brendon G. Anderson</a>&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;<a href="https://sam.pfrommer.us/">Samuel Pfrommer</a>,&nbsp;&nbsp;
+    <a href="https://brendon-anderson.github.io/">Brendon G. Anderson</a>,&nbsp;&nbsp;
     <a href="https://people.eecs.berkeley.edu/~sojoudi/">Somayeh Sojoudi</a>&nbsp;&nbsp;
    </h2>
     <center><h2>
@@ -176,27 +185,15 @@ Transport of Algebraic Structure to Latent Embeddings
 	<center><h2><a href="https://arxiv.org/abs/2405.16763"><img height="20" style='display:inline;' src="./icons/pdf.png"/> Paper</a> | <a href="https://github.com/spfrommer/latent_algebras"><img height="20" style='display:inline;' src="./icons/github.png"/> Code</a> </h2></center>
 
 
-<p>
-<div width="500"><p>
-  <table align=center width=800px>
-                <tr>
-                    <td>
-<p align="justify" width="20%">
+<p align="justify" width="500">
 Machine learning often aims to produce latent embeddings of inputs which lie in a larger, abstract mathematical space. For example, in the field of 3D modeling, subsets of Euclidean space can be embedded as vectors using implicit neural representations. Such subsets also have a natural algebraic structure including operations (e.g., union) and corresponding laws (e.g., associativity). How can we learn to “union” two sets using only their latent embeddings while respecting associativity? We propose a general procedure for parameterizing latent space operations that are provably consistent with the laws on the input space. This is achieved by learning a bijection from the latent space to a carefully designed <em>mirrored algebra</em> which is constructed on Euclidean space in accordance with desired laws. We evaluate these <em>structural transport nets</em> for a range of mirrored algebras against baselines that operate directly on the latent space. Our experiments provide strong evidence that respecting the underlying algebraic structure of the input space is key for learning accurate and self-consistent operations. 
-</p></td></tr></table>
-</p>
-  </div>
 </p>
 
 <hr>
 
 <h2 align="center">Algebraic structure and embedding spaces</h2>
 
-<div width="500"><p>
-  <table align=center width=800px>
-                <tr>
-                    <td>
-<p align="justify" width="20%">
+<p align="justify" width="500">
 Learned embeddings often represent mathematical objects with <em>algebraic structure</em>.
 
 Consider the space of subsets of $\mathbb{R}^n$, which can be endowed with <em>operations</em> (e.g., $\cap$, $\cup$) and <em>laws</em> (e.g., $A \cup B = B \cup A$).
@@ -204,61 +201,35 @@ Consider the space of subsets of $\mathbb{R}^n$, which can be endowed with <em>o
 Implicit Neural Representations (INRs) capture subsets as the sublevel sets of learned networks; we can then extract latent embeddings $z$ of sets via an autoencoder-style architecture on INR weights $\phi$.
 
 Specifically, we assume that we are provided with encoder/decoder maps $E$ and $D$ connecting latent embeddings in $L=\mathbb{R}^l$ to elements of the power set $\mathcal{P}(\mathbb{R}^n)$, where the latter <em>source space</em> carries algebraic structure.
-</p></td></tr></table>
 </p>
-  </div>
 
-<img src="figs/autoencoder.png" alt="INR autoencoder" style="width:700px;">
+<img class="body-img" src="figs/autoencoder.png" alt="INR autoencoder" style="width:500">
 
 
-<div width="500"><p>
-  <table align=center width=800px>
-                <tr>
-                    <td>
-<p align="justify" width="20%">
-The source algebra operations (e.g., $\cup$ and $\cap$) are often foundational for downstream tasks where we may only have access to latent embeddings. We thus intuitively want to learn latent-space operations which yield the correct results in set space. Informally, for the union operation this would mean that
+<p align="justify" width="500">
+The source algebra operations (e.g., $\cup$ and $\cap$) are often foundational for downstream tasks where we may only have access to latent embeddings. We thus intuitively want to learn latent-space operations which yield the correct results in set space. <em>Informally</em>, for the union operation this would mean that
 
-    $$ \phantom{\mathrm{(informal)}} \quad \quad A \cup^{\mathcal{S}} B \approx D(E(A) \cup^{\mathcal{L}} E(B)), \quad \quad \mathrm{(informal)}$$
+$$ A \cup^{\mathcal{S}} B \approx D(E(A) \cup^{\mathcal{L}} E(B)),$$
 
 where $\cup^\mathcal{S}: \mathcal{P}(\mathbb{R}^n) \times \mathcal{P}(\mathbb{R}^n) \to \mathcal{P}(\mathbb{R}^n)$ is the standard set union and $\cup^{\mathcal{L}}: L \times L \to L$ is a learned latent-space analog. We could imagine directly parameterizing maps $\cup^{\mathcal{L}}: L \times L \to L$ and $\cap^{\mathcal{L}}: L \times L \to L$ as MLPs:
-</p></td></tr></table>
 </p>
-  </div>
 
-<img src="figs/operations.png" alt="Learned operations" style="width:700px;">
+<img class="body-img" src="figs/operations.png" alt="Learned operations" style="width:500">
 
-<div width="500"><p>
-  <table align=center width=800px>
-                <tr>
-                    <td>
-<p align="justify" width="20%">
+<p align="justify" width="500">
 But such a naive parameterization would not capture the symmetries provided by the laws of the source algebra; $D(E(A) \cup^{\mathcal{L}} E(B))$ and $D(E(B) \cup^{\mathcal{L}} E(A))$ could yield completely different sets! This leads us to ask a key question:
-</p></td></tr></table>
 </p>
-  </div>
 
-<div width="500"><p>
-  <table align=center width=800px>
-                <tr>
-                    <td>
-<p align="center" width="20%">
+<p align="center" width="500">
 <em>Can we learn operations on the latent space which provably respect the algebraic laws of the source algebra?</em>
-</p></td></tr></table>
 </p>
-  </div>
 
 
-<div width="500"><p>
-  <table align=center width=800px>
-                <tr>
-                    <td>
-<p align="justify" width="20%">
+<p align="justify" width="500">
 While we focus our work on sets for exposition, we note that this connection between latent embeddings and source-space algebraic structure is quite general. A similar idea applies to learned (continuous) functions, probability distributions, and textual embeddings.
-</p></td></tr></table>
 </p>
-  </div>
 
-<img src="figs/intro.png" alt="Algebraic structure overview" style="width:700px;">
+<img class="body-img" src="figs/intro.png" alt="Algebraic structure overview" style="width:500">
 
 
 <hr>
@@ -266,23 +237,13 @@ While we focus our work on sets for exposition, we note that this connection bet
 <h2 align="center">Transport of structure</h2>
 
 
-<div width="500"><p>
-  <table align=center width=800px>
-                <tr>
-                    <td>
-<p align="justify" width="20%">
+<p align="justify" width="500">
 A precise formulation of our method relies on machinery from universal algebra. We provide an informal explanation here and refer to the <a href="https://arxiv.org/abs/2405.16763">full paper</a> for additional details.
-</p></td></tr></table>
 </p>
-  </div>
 
 
 
-<div width="500"><p>
-  <table align=center width=800px>
-                <tr>
-                    <td>
-<p align="justify" width="20%">
+<p align="justify" width="500">
 Our key idea is to parameterize a <em>learned bijection</em> $\varphi: L \to M$, where the <em>mirrored space</em> $M = \mathbb{R}^l$ is of the same dimensionality as $L$. We endow $M$ with one operation for each operation on the source algebra, attempting to ensure that these operations satisfy all required laws. For instance, we can define mirrored-space operations $\cup^{\mathcal{M}}: M \times M \to M, \cup^{\mathcal{M}}: M \times M \to M$ which form a <em>Riesz space</em>:
 
 $$ \begin{aligned} a \cup^{\mathcal{M}} b &= \mathrm{max}(a, b), \\ a \cap^{\mathcal{M}} b &= \mathrm{min}(a, b). \end{aligned} $$
@@ -294,64 +255,43 @@ $$
 $$
 
 Crucially, since $\varphi$ is a learned bijection, a good choice of operations on $M$ yields operations on $L$ which <em>provably satisfy</em> the desired source algebra laws. Details on how we train $\varphi$ and choose mirrored-space operations are deferred to the full paper.
+</p>
 
-<img src="figs/transport.png" alt="Algebraic structure overview" style="width:700px;">
+<img class="body-img" src="figs/transport.png" alt="Algebraic structure overview" style="width:500">
 
 <hr>
 
 <h2 align="center">Experimental results</h2>
 
 
-<table border="0" cellspacing="10" cellpadding="0" align="center">
-  <tbody><tr><td>
-  <p align="justify" width="20%">
+<p align="justify" width="500">
 Our problem setting concerns learning $\cap$ and $\cup$ over a dataset of synthetic sets in $\mathbb{R}^2$. We evaluate a variety of mirrored space operation combinations and two directly parameterized MLP references. 
 </p>
-</td>
-</tr>
-</tbody>
-</table>
 
 
-<img src="figs/results.png" alt="Results" style="width:700px;">
+<img class="body-img" src="figs/results.png" alt="Results" style="width:500">
 
-<table border="0" cellspacing="10" cellpadding="0" align="center">
-  <tbody><tr><td>
-  <p align="justify" width="20%">
+<p align="justify" width="500">
 The left-hand figure above plots the performance of learned operations against the number of satisfied source algebra laws. Each scatter point represents one combination of learned operations, with the solid line capturing the mean. The increasing trend confirm our primary hypothesis: learned latent-space operations achieve higher performance when constructed to satisfy source algeba laws.
 </p>
-</td>
-</tr>
-</tbody>
-</table>
 
-<table border="0" cellspacing="10" cellpadding="0" align="center">
-  <tbody><tr><td>
-  <p align="justify" width="20%">
-  The right-hand figure examines the <em>self-consistency</em> of learned operations; do they yield similar results for equivalent terms? For instance, does the prediction for $A \cup B$ match $B \cup A$? The Riesz space transported algebra is perfectly self-consistent as it satisfies all source algebra laws. However, all other learned operations degrade as more random laws are applied.
+<p align="justify" width="500">
+The right-hand figure examines the <em>self-consistency</em> of learned operations; do they yield similar results for equivalent terms? For instance, does the prediction for $A \cup B$ match $B \cup A$? The Riesz space transported algebra is perfectly self-consistent as it satisfies all source algebra laws. However, all other learned operations degrade as more random laws are applied.
 </p>
-</td>
-</tr>
-</tbody>
-</table>
 
 <hr>
 
 <h2 align="center">Reference</h2>
 
-<table align=center width=800px>
-              <tr>
-                  <td>
-                  <left>
-<pre><code style="display:block; overflow-x: auto">
-@inproceedings{pfrommer2024transport,
+<div style="text-align:left">
+<pre><code style="display:block; overflow-x: auto">@inproceedings{pfrommer2024transport,
    title={Transport of Algebraic Structure to Latent Embeddings},
    author={Pfrommer, Samuel and Anderson, Brendon G and Sojoudi, Somayeh},
    booktitle={International Conference on Machine Learning},
    year={2024}
 }
 </code></pre>
-</left></td></tr></table>
+</div>
 
 <!-- <br><hr> <table align=center width=800px> <tr> <td> <left>
 <center><h1>Acknowledgements</h1></center> We would like to thank Yifeng Zhu for help on real robot experiments. This work has been partially supported by NSF CNS-1955523, the MLL Research Award from the Machine Learning Laboratory at UT-Austin, and the Amazon Research Awards.
