@@ -381,4 +381,11 @@ The left-hand figure above plots the performance of learned operations against t
 
   gtag('config', 'G-PPXN40YS69');
 </script>
+
+<script>
+var links = document.links;
+for (var i = 0; i < links.length; i++) {
+     links[i].target = "_blank";
+}
+</script>
 <!-- </center></div></body></div> -->
