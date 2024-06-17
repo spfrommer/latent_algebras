@@ -37,7 +37,7 @@ var _POPUP_FEATURES = 'width=500,height=300,resizable=1,scrollbars=1,titlebar=1,
 <link media="all" href="./css/glab.css" type="text/css" rel="StyleSheet">
 <style type="text/css" media="all">
 body {
-    font-family: "Raleway";
+    font-family: sans-serif;
     font-weight: 300;
     font-size:18px;
     line-height: 4.0;

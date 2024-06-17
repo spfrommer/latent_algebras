@@ -18,7 +18,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Transport of Algebraic Structure to Latent Embeddings
+title: foo Transport of Algebraic Structure to Latent Embeddings
 email: sam.pfrommer@berkeley.edu
 description: >- # this means to ignore newlines until "baseurl:"
   Website for paper "Transport of Algebraic Structure to Latent Embeddings"
@@ -36,6 +36,9 @@ collections:
     project:
         output: true
 
+sphinx:
+  config:
+    mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
