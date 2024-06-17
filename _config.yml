@@ -18,7 +18,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: foo Transport of Algebraic Structure to Latent Embeddings
+title: Transport of Algebraic Structure to Latent Embeddings
 email: sam.pfrommer@berkeley.edu
 description: >- # this means to ignore newlines until "baseurl:"
   Website for paper "Transport of Algebraic Structure to Latent Embeddings"
