@@ -166,7 +166,7 @@ Transport of Algebraic Structure to Latent Embeddings
 </strong></h1></center>
 <center><h2>
     &nbsp;&nbsp;&nbsp;<a href="https://sam.pfrommer.us/">Samuel Pfrommer</a>&nbsp;&nbsp; 
-    <a href="https://brendon-anderson.github.io/">Brendon Anderson</a>&nbsp;&nbsp;
+    <a href="https://brendon-anderson.github.io/">Brendon G. Anderson</a>&nbsp;&nbsp;
     <a href="https://people.eecs.berkeley.edu/~sojoudi/">Somayeh Sojoudi</a>&nbsp;&nbsp;
    </h2>
     <center><h2>
@@ -357,7 +357,7 @@ The left-hand figure above plots the performance of learned operations against t
 <pre><code style="display:block; overflow-x: auto">
 @inproceedings{pfrommer2024transport,
    title={Transport of Algebraic Structure to Latent Embeddings},
-   author={Pfrommer, Samuel and Anderson, Brendon and Sojoudi, Somayeh},
+   author={Pfrommer, Samuel and Anderson, Brendon G and Sojoudi, Somayeh},
    booktitle={International Conference on Machine Learning},
    year={2024}
 }
