@@ -126,6 +126,18 @@ table
 	}
 </style>
 
+<style>
+  .header {
+    display: none;
+  }
+</style>
+
+<style>
+  .footer {
+    display: none;
+  }
+</style>
+
 <meta content="MSHTML 6.00.2800.1400" name="GENERATOR"><script
 src="./src/b5m.js" id="b5mmain"
 type="text/javascript"></script><script type="text/javascript"
@@ -284,8 +296,7 @@ A precise formulation of our method relies on machinery from universal algebra. 
 <p align="justify" width="20%">
 Our key idea is to parameterize a <em>learned bijection</em> $\varphi: L \to M$, where the <em>mirrored space</em> $M = \mathbb{R}^l$ is of the same dimensionality as $L$. We endow $M$ with one operation for each operation on the source algebra, attempting to ensure that these operations satisfy the required laws. For instance, we can define mirrored-space operations $\cup^{\mathcal{M}}: M \times M \to M, \cup^{\mathcal{M}}: M \times M \to M$ which form a <em>Riesz space</em>:
 
-$$ a \cup^{\mathcal{M}} b = \mathrm{max}(a, b), $$
-$$ a \cap^{\mathcal{M}} b = \mathrm{min}(a, b). $$
+$$ \begin{aligned} a \cup^{\mathcal{M}} b &= \mathrm{max}(a, b), \\ a \cap^{\mathcal{M}} b &= \mathrm{min}(a, b). \end{aligned} $$
 
 This choice of operations satisfies all the same laws as $\cup^{\mathcal{S}}$ and $\cap^{\mathcal{S}}$ on the space of sets: commutativity, associativity, absorption, and distributivity. We can then transfer the operations $f \in \{\cup, \cap\}$ to the latent space via $\varphi$:
 
