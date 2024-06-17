@@ -31,9 +31,7 @@ MathJax.Hub.Register.StartupHook("End Jax",function () {
 
 
 <!-- <meta property="og:image" content="images/teaser_fb.jpg"> -->
-<meta property="og:title" content="TITLE">
-
-<script src="./src/popup.js" type="text/javascript"></script>
+<!--<meta property="og:title" content="TITLE">-->
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 
@@ -362,16 +360,16 @@ The left-hand figure above plots the performance of learned operations against t
 <!-- </left></td></tr></table>
 <br><br> -->
 
-<div style="display:none">
+<!--<div style="display:none">-->
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-PPXN40YS69"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<!--<script async src="https://www.googletagmanager.com/gtag/js?id=G-PPXN40YS69"></script>-->
+<!--<script>-->
+  <!--window.dataLayer = window.dataLayer || [];-->
+  <!--function gtag(){dataLayer.push(arguments);}-->
+  <!--gtag('js', new Date());-->
 
-  gtag('config', 'G-PPXN40YS69');
-</script>
+  <!--gtag('config', 'G-PPXN40YS69');-->
+<!--</script>-->
 
 <script>
 var links = document.links;
